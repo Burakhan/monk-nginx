@@ -1,0 +1,2 @@
+REPO nginx
+LOAD nginx.yml

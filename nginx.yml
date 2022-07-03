@@ -1,0 +1,38 @@
+namespace: monk-nginx
+
+latest:
+  defines: runnable
+  variables:
+    defines: variables
+    server-name:
+      type: string
+      value: www.example.com
+    listen-port:
+      type: string
+      value: "8080"
+    static-data:
+      value: '/Users/burakhan/www/monkd/monk-nginx/app'
+      type: string
+  files:
+    defines: files
+    server-def:
+      contents: |
+        server {
+          listen 0.0.0.0:{{ v "listen-port" }};
+          server_name {{ v "server-name" }};
+          root /app;
+          location / {
+            try_files $uri $uri/ =404;
+          }
+        }
+      container: nginx-static
+      path: /opt/bitnami/nginx/conf/server_blocks/static_files.conf
+      mode: 511
+  containers:
+    defines: containers
+    nginx-static:
+      ports:
+        - <- `0.0.0.0:${listen-port}:${listen-port}/tcp`
+      image-tag: latest
+      image: docker.io/bitnami/nginx
+      paths: <- `${static-data}:/app`
