@@ -16,11 +16,13 @@ not connected to cluster
 ```
 
 ## Check cluster nodes
+```bash
 foo@bar:~$ monk cluster peers
 ✔ Got the list of peers
 ID                                              Name   Tag  Provider  Containers  IP           Uptime   Active  Version  Pressure
 QmXiEXRNs5tSjKcYvZcX4Z71qBEs2rZeiUEYaM8wLrKHME  local       unknown   0           127.0.0.1    28m 26s  true    v3.4.3   false
 QmQN8BBx7Py3yZc9sq8Zshy9mN6YPs2YNNxsCg1oJrbrtN  wp-1   wo   aws       3           52.59.97.36  16m 2s   true    v3.4.3   false
+```
 
 ## Clone Repository
 ```bash
@@ -30,6 +32,7 @@ cd monk-nginx
 
 
 ## Load template
+```bash
 foo@bar:~$ monk load MANIFEST
 ✔ Read files successfully
 ✔ Loaded nginx.yml successfully
@@ -39,8 +42,10 @@ Loaded 1 runnables, 0 process groups, 0 services, 0 entities and 0 entity instan
  └─🔩 Runnables:
     └─🧩 monk-nginx/latest
 ✔ All templates loaded successfully
+```
 
 ## Run nginx 
+```bash
 foo@bar:~$ monk run monk-nginx/latest
 ✔ Starting the job: monk-nginx/latest... DONE
 ✔ Preparing nodes DONE
@@ -63,6 +68,7 @@ foo@bar:~$ monk run monk-nginx/latest
 	monk shell     monk-nginx/latest - Connect to the container's shell
 	monk do        monk-nginx/latest/action_name - Run defined action (if exists)
 💡 Check monk help for more!
+```
 
 ## Variables
 The variables are in `nginx.yml` file. You can quickly setup by editing the values here.
